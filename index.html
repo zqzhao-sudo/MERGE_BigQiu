@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8f5ed">
+<title>合成大球球</title><meta name="description" content="十级球球合成游戏。移动瞄准，放下球球，两个相同等级的球球相碰即可合成。">
+<link rel="icon" href="assets/sleep.png"><link rel="stylesheet" href="style.css">
+<script defer src="assets/matter.min.js"></script><script defer src="game.js"></script>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="./" aria-label="合成大球球首页"><img src="assets/sleep.png" alt=""><span>合成大球球</span></a><nav aria-label="游戏设置"><button id="gift-btn" class="icon-button gift-button" aria-label="重看神秘彩蛋" hidden>✦</button><button id="help-btn" class="icon-button" aria-label="玩法说明">?</button><button id="sound-btn" class="sound-button" aria-pressed="true">♪ <span>声音已开</span></button></nav></header>
+<main>
+<section class="play-section" aria-label="合成大球球游戏">
+<div class="game-top"><div class="score"><span>本局得分</span><strong id="score">0</strong></div><div class="best"><span>最高纪录</span><strong id="best">0</strong></div><div class="merge-stat"><span>本局合成</span><strong><span id="merge-count">0</span><small>次</small></strong></div><button id="pause-btn" class="icon-button pause" aria-label="暂停游戏" disabled>Ⅱ</button></div>
+<div id="board" class="board"><canvas id="game" width="380" height="530" tabindex="0" aria-label="游戏区域，左右箭头移动，空格键放下球球。手机可滑动瞄准，松手落下。"></canvas>
+<div id="start-panel" class="board-overlay"><h1>合成大球球</h1><p class="start-copy">共 10 级，两个相同的球球相碰即可合成。</p><ol id="start-levels" class="start-levels" aria-label="10 级球球，从小到大排列"></ol><label id="start-gift-setting" class="gift-setting" hidden><input id="start-gift-enabled" type="checkbox" checked>本局显示神秘彩蛋</label><button id="start-btn" class="primary-button">开始游戏</button><span class="start-tip">左右瞄准 · 松手落下</span></div>
+<div id="pause-panel" class="board-overlay" hidden><h2>游戏暂停</h2><label id="pause-gift-setting" class="gift-setting" hidden><input id="pause-gift-enabled" type="checkbox" checked>下局显示神秘彩蛋</label><button id="resume-btn" class="primary-button">继续游戏</button><button id="restart-btn" class="text-button">重新开始</button></div>
+<div id="over-panel" class="board-overlay" hidden><img src="assets/no-brain.png" alt="球球" class="over-art"><h2>游戏结束</h2><p>本局得分 <strong id="final-score">0</strong></p><label id="over-gift-setting" class="gift-setting" hidden><input id="over-gift-enabled" type="checkbox" checked>下局显示神秘彩蛋</label><button id="retry-btn" class="primary-button">再来一局</button><button id="over-gift-btn" class="text-button" hidden>重看神秘彩蛋</button></div>
+<div id="danger-label" class="danger-label" hidden>超过警戒线了，快合成！</div>
+</div>
+<div class="board-footer"><span id="game-status">相同等级相碰即可合成</span><button id="guide-btn" class="text-button">玩法说明</button></div>
+</section>
+</main>
+<dialog id="help-dialog"><button class="close-button" data-close aria-label="关闭玩法说明">×</button><h2>玩法说明</h2><div class="help-pair"><img src="assets/sleep.png" alt="球眠"> + <img src="assets/sleep.png" alt="球眠"> → <img src="assets/wakeup.png" alt="起床"></div><ol><li>鼠标左右移动，点击放下；手机按住滑动，松手落下。</li><li>两个相同等级的球球相碰，合成下一级，共 10 级。</li><li>等上一只球球碰到其他球球或底部，再放下一只。</li><li>随机掉落前 5 级球球。球球落稳后，持续越线 1 秒，本局结束。</li></ol><p class="dialog-note">键盘：← → 移动，空格放下，Esc 暂停。</p><button class="primary-button" data-close>开始玩吧</button></dialog>
+<dialog id="birthday-dialog" class="birthday-dialog"><button class="close-button" data-close aria-label="收起神秘彩蛋">×</button><div class="confetti" aria-hidden="true"></div><div class="birthday-art"><span>✧</span><img src="assets/birthday.png" alt="捧着生日蛋糕的球球"><span>✦</span></div><span id="birthday-tag" class="little-tag" hidden>第 10 级达成</span><h2>生日快乐</h2><div class="qiu-language"><p>Bo-lu Qiu!</p></div><div class="birthday-languages" aria-label="英语、日语和德语的生日快乐"><p lang="en">Happy birthday!</p><p lang="ja">お誕生日おめでとう！</p><p lang="de">Alles Gute zum Geburtstag!</p></div><button id="replay-song" class="song-button">♫ 再听一次生日歌</button><label class="gift-setting birthday-setting"><input id="disable-next-gift" type="checkbox">下局关闭彩蛋</label><button id="back-game" class="primary-button">返回游戏</button><span id="birthday-audio-status" class="song-status" aria-live="polite"></span></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body></html>
